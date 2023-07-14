@@ -6,7 +6,8 @@ const requests = {
   TopRated: `/movie/top_rated?api_key=${API_KEY}`,
   Intheaters: `/movie/now_playing?api_key=${API_KEY}`,
   UpcomingMovies: `/movie/upcoming?api_key=${API_KEY}`,
-  popular: `/movie/popular?api_key=${API_KEY}`,
+  popularMovie: `/movie/popular?api_key=${API_KEY}`,
+  popularTV: `/tv/popular?api_key=${API_KEY}`,
 
 };
 

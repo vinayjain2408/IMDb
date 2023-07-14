@@ -1,0 +1,61 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.top-week{
+   margin: 2rem;
+}
+.top-week h2{
+   border-left: 5px solid yellow;
+   margin-left: 1rem;
+   padding-left: 10px;
+}
+
+.Movie-detail{
+   height: 530px;
+    border: 1px solid black;
+    /* margin: 1rem; */
+}
+.Movie-detail:hover{
+    scale: 1.2;
+}
+.Movie-detail img{
+    height: 300px;
+    width: 100%;
+   
+}
+
+.icon{
+    color: yellow;
+}
+.list{
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 115px;
+    left: 10px;
+}
+.list a{
+    text-decoration: none;
+    color: #fff;
+    text-align: center;
+}
+.list a:first-child{
+   background-color: rgba(0, 0, 0, 0.428);
+   padding: 8px;
+    color:blue;
+    text-align: center;
+    border-radius: 10px ;
+    margin-bottom: 5px;
+    padding: 10px 20px;
+}
+
+.contain{
+    padding: 0.5rem;
+    position: relative;
+}
+
+.slick-slide > div{
+    padding: 0 10px 0 10px;
+}

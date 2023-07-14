@@ -16,7 +16,7 @@ function Arrow(props) {
   );
 }
 
-function Slider() {
+function Banner() {
   const settings = {
     dots: true,
     infinite: true,
@@ -58,4 +58,4 @@ function Slider() {
   );
 }
 
-export default Slider;
+export default Banner;

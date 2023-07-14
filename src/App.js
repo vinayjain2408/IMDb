@@ -1,29 +1,40 @@
 import React from 'react'
-import Header from './Components/Header'
-import Slider from './Components/Slider'
-import Wishlist from './Components/Wishlist'
-import Week from './Components/this week/Week'
+import {BrowserRouter , Routes, Route} from "react-router-dom"
+// import Header from './Components/Header'
+// import Banner from './Components/Banner'
+// import Wishlist from './Components/Wishlist'
+// import Axios from "./Components/toggle/Axios"
+// import Week from './Components/this week/Week'
 import Footer from './Components/Footer'
-import requests from './server/Server'
+// import requests from './server/Server'
+
+// import Serial from './Components/toggle/AllSerial/Serial'
+import Detail from './Components/toggle/AllSerial/Detail'
+import Home from './Home'
 // import Favorites from "./Components/favourite/Favorites"
 
 
 function App() {
+
+  
+
   return (
     <div>
-      <Header />
-      <Slider />
+      <BrowserRouter>
+      <Routes>
+        <Route path='/' element={<Home/>}></Route>
+        {/* <Route path='/' element={<Banner/>}></Route>
+        <Route path='/' element={<Axios/>}></Route>
+        <Route path='/' element={<Wishlist/>}></Route> */}
+        {/* <Route path='/' element={<Serial/>}></Route> */}
+        <Route path='/Singlepath/:id' element={<Detail/>}></Route>
+        <Route path='/' element={<Footer/>}></Route>
 
-      <Week
-        Name="Featured today"
-        Data={requests.featureDay} />
+      </Routes>
+      </BrowserRouter>
 
-      <Wishlist />
 
-      <Week
-        Name="Top 10 on IMDb this week"
-        Data={requests.Week} />
-      <Week
+      {/* <Week
         Name="Fan favorites"
         Data={requests.TopRated} />
       <Week
@@ -31,11 +42,9 @@ function App() {
         Data={requests.Intheaters} />
       <Week
         Name="Coming soon to theaters"
-        Data={requests.UpcomingMovies} />
-      <Week
-        Name="Popular"
-        Data={requests.fetchpopular} />
-      <Footer />
+        Data={requests.UpcomingMovies} /> */}
+
+      {/* <Footer /> */}
     </div>
   )
 }
