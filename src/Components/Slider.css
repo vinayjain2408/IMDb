@@ -1,0 +1,29 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  .slider-container {
+    margin: 1rem 2rem;
+  }
+  
+  
+  .slide-image {
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 500px;
+    width: 100%;
+    position: relative;
+
+  }
+  
+  .slide-image h3 {
+    color: yellow;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    margin-left: 1rem;
+  }
+  
