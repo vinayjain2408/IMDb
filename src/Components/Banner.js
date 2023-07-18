@@ -32,7 +32,7 @@ function Banner() {
     async function fetchData() {
       try {
         const response = await axios.get('https://api.themoviedb.org/3/movie/upcoming?api_key=251ac7a461ba588030cfa89b0cd75329');
-        console.log(response.data.results);
+        // console.log(response.data.results);
         setMovies(response.data.results);
       } catch (error) {
         console.error("Error fetching movies:", error);

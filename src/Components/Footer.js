@@ -4,6 +4,7 @@ import TwitterIcon from '@mui/icons-material/Twitter';
 import MusicNoteIcon from '@mui/icons-material/MusicNote';
 import YouTubeIcon from '@mui/icons-material/YouTube';
 import FacebookIcon from '@mui/icons-material/Facebook';
+import OpenInNewIcon from '@mui/icons-material/OpenInNew';
 import "./Footer.css"
 
 function Footer() {
@@ -22,19 +23,19 @@ function Footer() {
      
 
         <ul className='content'>
-            <li><a href=''>Get the IMDb App</a></li>
-            <li><a href=''>Help</a></li>
-            <li><a href=''>Site Index</a></li>
-            <li><a href=''>IMDbPro</a></li>
-            <li><a href=''>Box Office Mojo</a></li>
-            <li><a href=''>IMDb Developer</a></li>
+            <li><a href=''>Get the IMDb App <OpenInNewIcon className='Link-icon'/></a></li>
+            <li><a href=''>Help<OpenInNewIcon className='Link-icon'/></a></li>
+            <li><a href=''>Site Index<OpenInNewIcon className='Link-icon'/></a></li>
+            <li><a href=''>IMDbPro<OpenInNewIcon className='Link-icon'/></a></li>
+            <li><a href=''>Box Office Mojo<OpenInNewIcon className='Link-icon'/></a></li>
+            <li><a href=''>IMDb Developer<OpenInNewIcon className='Link-icon'/></a></li>
         </ul>
 
     
         <ul className='content'>
             <li><a href=''>Press Room</a></li>
-            <li><a href=''>Advertising</a></li>
-            <li><a href=''>Jobs</a></li>
+            <li><a href=''>Advertising<OpenInNewIcon className='Link-icon'/></a></li>
+            <li><a href=''>Jobs<OpenInNewIcon className='Link-icon'/></a></li>
             <li><a href=''>Conditions of Use</a></li>
             <li><a href=''>Privacy Policy</a></li>
             <li><a href=''>Your Ads Privacy Choices</a></li>
