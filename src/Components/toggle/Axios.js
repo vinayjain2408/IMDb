@@ -8,7 +8,7 @@ import ReactSwitch from 'react-switch';
 import requests from '../../server/Server';
 import "./Axios.css"
 
-function Week(props) {
+function Axios(props) {
 
 
 var settings = {
@@ -70,4 +70,4 @@ var settings = {
   );
 }
 
-export default Week;
+export default Axios;

@@ -1,52 +1,46 @@
-import React from 'react'
-import {BrowserRouter , Routes, Route} from "react-router-dom"
-// import Header from './Components/Header'
-// import Banner from './Components/Banner'
-// import Wishlist from './Components/Wishlist'
-// import Axios from "./Components/toggle/Axios"
-// import Week from './Components/this week/Week'
-import Footer from './Components/Footer'
-// import requests from './server/Server'
-
-// import Serial from './Components/toggle/AllSerial/Serial'
-import Detail from './Components/toggle/AllSerial/Detail'
-import Home from './Home'
-// import Favorites from "./Components/favourite/Favorites"
-
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Header from './Components/Header';
+import Footer from './Components/Footer';
+import Detail from './Components/toggle/AllSerial/Detail';
+import Home from './Home';
 
 function App() {
-
-  
-
   return (
-    <div>
-      <BrowserRouter>
+    <Router>
+      <Header />
       <Routes>
-        <Route path='/' element={<Home/>}></Route>
-        {/* <Route path='/' element={<Banner/>}></Route>
-        <Route path='/' element={<Axios/>}></Route>
-        <Route path='/' element={<Wishlist/>}></Route> */}
-        {/* <Route path='/' element={<Serial/>}></Route> */}
-        <Route path='/Singlepath/:id' element={<Detail/>}></Route>
-        <Route path='/' element={<Footer/>}></Route>
-
+        <Route path="/" element={<Home />} />
+        <Route path="/detail/:index" element={<Detail />} />
       </Routes>
-      </BrowserRouter>
-
-
-      {/* <Week
-        Name="Fan favorites"
-        Data={requests.TopRated} />
-      <Week
-        Name="In theaters"
-        Data={requests.Intheaters} />
-      <Week
-        Name="Coming soon to theaters"
-        Data={requests.UpcomingMovies} /> */}
-
-      {/* <Footer /> */}
-    </div>
-  )
+      <Footer />
+    </Router>
+  );
 }
 
-export default App
+export default App;
+
+
+
+
+// import React from 'react'
+// import {BrowserRouter , Routes, Route} from "react-router-dom"
+// import Header from './Components/Header'
+// import Footer from './Components/Footer'
+// import Detail from './Components/toggle/AllSerial/Detail'
+// import Home from './Home'
+// function App() {
+
+//   return (
+//       <BrowserRouter>
+//       <Header/>
+//       <Routes>
+//         <Route path='/' element={<Home/>}></Route>
+//         <Route path='/Singlepath/:index' element={<Detail/>}></Route>
+//       </Routes>
+//       <Footer />
+//       </BrowserRouter> 
+//   )
+// }
+
+// export default App

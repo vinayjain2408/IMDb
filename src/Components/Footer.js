@@ -4,7 +4,7 @@ import TwitterIcon from '@mui/icons-material/Twitter';
 import MusicNoteIcon from '@mui/icons-material/MusicNote';
 import YouTubeIcon from '@mui/icons-material/YouTube';
 import FacebookIcon from '@mui/icons-material/Facebook';
-import "../Footer.css"
+import "./Footer.css"
 
 function Footer() {
   return (

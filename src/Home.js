@@ -9,10 +9,8 @@ import Serial from './Components/toggle/AllSerial/Serial'
 
 function Home() {
   return (
-    <div>
-        <Header />
-        <Serial />
-        {/* <Banner />
+    <div>  
+        <Banner />
         <Axios />
         <Wishlist />
         <Week
@@ -23,7 +21,9 @@ function Home() {
         Data={requests.Intheaters} />
       <Week
         Name="Coming soon to theaters"
-        Data={requests.UpcomingMovies} /> */}
+        Data={requests.UpcomingMovies} />
+
+      <Serial />  
     </div>
   )
 }

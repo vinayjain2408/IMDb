@@ -1,0 +1,58 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.box{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 1rem;
+}
+.Container{
+    margin: 1rem 3rem 4rem 2rem;
+}
+.Container h1:first-child{
+    color:yellow;
+    margin-left: 2rem;
+}
+
+.Single-contain{
+   height: 400px;
+   width: 300px;
+   position: relative;
+ 
+}
+
+.Single-contain img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(241, 229, 229, 0.96);
+    transition: transform 0.3s ease;
+}
+
+.Single-contain img:hover {
+    transform: scale(1.05);
+}
+
+
+.lists{
+width: 60%;
+border: 1px solid black;
+padding: 15px;
+border-radius: 10px;  
+background-color: rgba(50, 49, 45, 0.839);
+}
+.lists h2{
+    color: yellow;
+
+}
+
+
+
+.slick-slide > div{
+    padding: 0 10px 0 10px;
+}
