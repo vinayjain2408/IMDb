@@ -6,23 +6,36 @@
 
 .box{
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin: 1rem;
-}
-.Container{
-    margin: 1rem 3rem 4rem 2rem;
-}
-.Container h1:first-child{
-    color:yellow;
-    margin-left: 2rem;
+    flex-direction: column;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+    background-size: cover;
+    padding: 3rem 3rem;
+    /* opacity: 0.3; */
+    background-color: rgba(0, 0, 0, 0.2);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
+.text h1{
+    color: yellow;
+    border-left: 8px solid yellow;
+    padding-left: 8px;
+    margin-bottom: 30px;
+    opacity: 1;
+}
+.flex-box{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
 .Single-contain{
-   height: 400px;
-   width: 300px;
-   position: relative;
- 
+   height: 450px;
+   width: 300;
+   opacity: 1;
+   margin-right: 1rem;
 }
 
 .Single-contain img {
@@ -36,14 +49,15 @@
 
 .Single-contain img:hover {
     transform: scale(1.05);
-}
+} 
 
 
 .lists{
-width: 60%;
+width: 40%;
 border: 1px solid black;
 padding: 15px;
 border-radius: 10px;  
+opacity: 1;
 background-color: rgba(50, 49, 45, 0.839);
 }
 .lists h2{
@@ -51,8 +65,11 @@ background-color: rgba(50, 49, 45, 0.839);
 
 }
 
-
-
-.slick-slide > div{
-    padding: 0 10px 0 10px;
+.lists p span{
+    padding: 10px 20px;
+    border-radius: 15px;
+    background-color: yellow;
+    color: black;
+    margin:5px;
+    font-weight: 600;
 }
