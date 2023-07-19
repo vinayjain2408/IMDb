@@ -1,10 +1,12 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
 import './Detail.css';
+import { MyContext } from '../../../App';
 
 function Detail() {
-  const { index, SerialLink } = useParams();
+  const {SerialLink} = useContext(MyContext)
+  const { index } = useParams();
   console.log(index);
 
   const [single, setSingle] = useState({});
@@ -35,7 +37,7 @@ function Detail() {
             </div>
 
             <div className="lists">
-              <h2>{single.original_title}</h2>
+              <h2>{single.original_title || single.original_name}</h2>
               <p>{single.overview}</p>
             </div>
           </div>
@@ -129,6 +131,14 @@ export default Detail;
 
 
 
+
+
+
+
+
+
+// Single Api have one Object Data show in Single Page
+
 // import React, { useEffect, useState } from 'react';
 // import axios from 'axios';
 // import requests from '../../../server/Server';
@@ -146,7 +156,7 @@ export default Detail;
 
 //   useEffect(() => {
 //     async function fetchData() {    
-//       let response = await axios.get(`https://api.themoviedb.org/3/movie/${requests.popularMovie}`);
+//       let response = await axios.get(`https://api.themoviedb.org/3/${requests.popularMovie}`);
 //       console.log(response.data.results[index]);
 //       setSingle(response.data.results[index]);
 //       // console.log(response?.data?.results);
