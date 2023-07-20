@@ -4,7 +4,7 @@ import Header from './Components/Header';
 import Footer from './Components/Footer';
 import Detail from './Components/toggle/AllSerial/Detail';
 import Home from './Home';
-import { Details } from '@mui/icons-material';
+import Search from './Components/search/Search';
 function App() {
 
 
@@ -16,7 +16,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/detail/:checkType/:id" element={<Detail />} />
-        <Route path="/search" element={<Detail />} />
+        <Route path="/search/:inputValue" element={<Search />} />
       
       </Routes>
       {/* <Footer /> */}

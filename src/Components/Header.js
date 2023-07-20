@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState} from 'react';
 import './Header.css';
 import MenuIcon from '@mui/icons-material/Menu';
 import FormatListBulletedIcon from '@mui/icons-material/FormatListBulleted';
 import SearchIcon from '@mui/icons-material/Search';
-import axios from 'axios';
-import Slider from "react-slick";
+import { Link } from 'react-router-dom';
+
 
 function Header() {
   const [inputValue, setInputValue] = useState('');
@@ -24,7 +24,7 @@ function Header() {
         <div className='input'>
           <button>All</button>
           <input type='text' placeholder='Search IMDb' onChange={changeInput} value={inputValue} />
-          <button ><SearchIcon /></button>
+          <Link to={`search/${inputValue}`} ><SearchIcon /></Link>
         </div>
         <div className='menu'>
           <a href=''>
