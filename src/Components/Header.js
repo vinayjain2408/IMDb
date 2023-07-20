@@ -17,8 +17,9 @@ function Header() {
       <div className='header'>
         <div className='menu'>
           <h3>IMDb</h3>
-          <MenuIcon />
-          <a href=''> Menu</a>
+          
+          <Link to="/"> Home</Link>
+          <a href=''><MenuIcon /> Menu</a>
         </div>
 
         <div className='input'>

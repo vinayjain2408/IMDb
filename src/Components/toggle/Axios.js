@@ -24,14 +24,14 @@ var settings = {
   const [axiosLink, setAxiosLink] = useState(requests.featureDay);
   const [checked, setChecked] = useState(false);
 
-  const handleChange = () => {
-    setChecked(!checked);
-    if (axiosLink === requests.featureDay) {
+  function handleChange(type) {
+    if (type === 'day') {
       setAxiosLink(requests.Week);
-    } else {
+    } else if (type === 'week') {
       setAxiosLink(requests.featureDay);
     }
-  };
+    // setAxiosLink(type)
+  }
 
 
   const [week, setWeek] = useState([]);
@@ -46,10 +46,14 @@ var settings = {
 
   return (
     <>
-      <ReactSwitch checked={checked} onChange={handleChange} />
+       <div className='btn'>
+        <button onClick={() => handleChange('day')}>day</button>
+        <button onClick={() => handleChange('week')}>Week</button>
+      </div>
+   
 
       <div className='top-week'>
-        <h2>{props.Name}</h2>
+        <h2>Recent </h2>
         <Slider {...settings}>
           {week.map((movie, index) => (
             <div key={index} className='Movie-detail'>

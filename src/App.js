@@ -19,7 +19,7 @@ function App() {
         <Route path="/search/:inputValue" element={<Search />} />
       
       </Routes>
-      {/* <Footer /> */}
+      <Footer />
     </Router>
  
   );
