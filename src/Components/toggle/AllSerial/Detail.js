@@ -2,16 +2,21 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Link, useParams } from 'react-router-dom';
 import './Detail.css';
+import { Button, Modal } from 'react-bootstrap';
+import ReactPlayer from 'react-player';
+// import "bootstrap/dist/css/bootstrap.min.css"
 
-function Detail(props) {
+
+function Detail() {
   const { checkType, id } = useParams();
   const [single, setSingle] = useState({});
+  const [video, setVideo] = useState([]);
+  // const [modal, setModal] = useState(false);
 
   useEffect(() => {
     async function fetchData() {
       try {
         const response = await axios.get(`https://api.themoviedb.org/3/${checkType}/${id}?api_key=251ac7a461ba588030cfa89b0cd75329`);
-        console.log(response.data, "response");
         setSingle(response.data);
       } catch (error) {
         console.error('Error fetching data:', error);
@@ -21,20 +26,26 @@ function Detail(props) {
     fetchData();
   }, [checkType, id]);
 
-
-  const [Video , setVideo] = useState([])
-
-  const handleClick = async (e) => {
-    e.preventDefault()
+  const handleTrailerClick = async (e) => {
+    e.preventDefault();
     try {
       const result = await axios.get(`https://api.themoviedb.org/3/${checkType}/${id}/videos?api_key=251ac7a461ba588030cfa89b0cd75329`);
-      console.log(result.data.results, "response");
       setVideo(result.data.results);
+      // setModal(true);
+      setModal(!modal);
+      console.log(modal)
     } catch (error) {
       console.error('Error fetching data:', error);
     }
   };
-  console.log(Video.name)
+
+  const [modal, setModal] = useState(false);
+
+  const toggleModal = () => {
+    setModal(!modal);
+  };
+  
+
 
   return (
     <>
@@ -52,34 +63,173 @@ function Detail(props) {
             <p>{single.overview}</p>
             <p>Rating: {single.vote_average}/10</p>
             <p>{single.status}</p>
-            <p>
+            <p className='para'>
               {single.genres &&
                 single.genres.map((item) => (
                   <span key={item.id}>{item.name}</span>
                 ))}
             </p>
-            <a href='' onClick={handleClick}>Trailer</a>
+            <button onClick={handleTrailerClick}>Trailer </button>
           </div>
         </div>
       </div>
 
-      <div>
-        <iframe
-          key={Video?.length !==0 ? Video[0]?.key : null}
-          width="560"
-          height="350"
-          src={`http://www.youtube.com/embed/${Video?.length !==0 ? Video[0]?.key : null}`}
-          title="youtube video"
-        ></iframe>
-        {/* <modal key={key} /> */}
 
-      
-      </div>
+          {/* <ReactPlayer controls={true} url={`http://www.youtube.com/embed/${video?.length !==0 ? video[0]?.key : null}`} height="500px" width="750px"
+          ></ReactPlayer> */}
+
+
+        <Modal show={modal }  size="lg">
+              
+          <div className='tailer-modal' >
+            <button onClick={toggleModal}>X</button>
+          <iframe
+           key={video?.length !==0 ? video[0]?.key : null}
+           width="800"
+           height="500"
+           src={`http://www.youtube.com/embed/${video?.length !==0 ? video[0]?.key : null}`}
+           title="youtube video"
+           ></iframe> 
+           </div>
+
+           </Modal>
+
     </>
   );
 }
 
 export default Detail;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// import React, { useEffect, useState } from 'react';
+// import axios from 'axios';
+// import { Link, useParams } from 'react-router-dom';
+// import './Detail.css';
+
+// function Detail(props) {
+//   const { checkType, id } = useParams();
+//   const [single, setSingle] = useState({});
+
+//   useEffect(() => {
+//     async function fetchData() {
+//       try {
+//         const response = await axios.get(`https://api.themoviedb.org/3/${checkType}/${id}?api_key=251ac7a461ba588030cfa89b0cd75329`);
+//         console.log(response.data, "response");
+//         setSingle(response.data);
+//       } catch (error) {
+//         console.error('Error fetching data:', error);
+//       }
+//     }
+
+//     fetchData();
+//   }, [checkType, id]);
+
+
+//   const [video , setVideo] = useState([])
+//   const [modal, setModal] = useState(false);
+
+//   if(modal) {
+//     document.body.classList.add('active-modal')
+//   } else {
+//     document.body.classList.remove('active-modal')
+//   }
+
+//   const handleClick = async (e) => {
+//     e.preventDefault()
+//     try {
+//       const result = await axios.get(`https://api.themoviedb.org/3/${checkType}/${id}/videos?api_key=251ac7a461ba588030cfa89b0cd75329`);
+//       console.log(result.data.results, "response");
+//       setVideo(result.data.results);
+//       setModal(!modal);
+//       console.log(modal)
+//     } catch (error) {
+//       console.error('Error fetching data:', error);
+//     }
+//   };
+
+//   return (
+//     <>
+//       <div className='box' style={{ backgroundImage: `url(https://image.tmdb.org/t/p/original${single.backdrop_path})` }}>
+//         <div className='text'>
+//           <h1>Details</h1>
+//         </div>
+//         <div className='flex-box'>
+//           <div className='Single-contain'>
+//             <img src={`https://image.tmdb.org/t/p/original${single.poster_path}`} alt='Poster' />
+//           </div>
+//           <div className='lists'>
+//             <h2>{single.original_title || single.original_name}</h2>
+//             <p>{single.tagline}</p>
+//             <p>{single.overview}</p>
+//             <p>Rating: {single.vote_average}/10</p>
+//             <p>{single.status}</p>
+//             <p className='para'>
+//               {single.genres &&
+//                 single.genres.map((item) => (
+//                   <span key={item.id}>{item.name}</span>
+//                 ))}
+//             </p>
+//             <a href='' onClick={handleClick}>Trailer</a>
+//           </div>
+//         </div>
+//       </div>
+
+//       <div>
+//         {/* <iframe
+//           key={video?.length !==0 ? video[0]?.key : null}
+//           width="560"
+//           height="350"
+//           src={`http://www.youtube.com/embed/${video?.length !==0 ? video[0]?.key : null}`}
+//           title="youtube video"
+//         ></iframe> */}
+//         {/* <modal key={key} /> */}
+
+      
+//       </div>
+
+      
+//       {modal && (
+//         <div className="modal">
+//           <div onClick={handleClick} className="overlay"></div>
+//           <div className="modal-content">
+//             <h2>Hello Modal</h2>
+//             <p>
+//               Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident
+//               perferendis suscipit officia recusandae, eveniet quaerat assumenda
+//               id fugit, dignissimos maxime non natus placeat illo iusto!
+//               Sapiente dolorum id maiores dolores? Illum pariatur possimus
+//               quaerat ipsum quos molestiae rem aspernatur dicta tenetur. Sunt
+//               placeat tempora vitae enim incidunt porro fuga ea.
+//             </p>
+//             <button className="close-modal" onClick={handleClick}>
+//               CLOSE
+//             </button>
+//           </div>
+//         </div>
+//       )}
+
+//     </>
+//   );
+// }
+
+// export default Detail;
 
 
 

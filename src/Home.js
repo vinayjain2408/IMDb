@@ -1,18 +1,18 @@
 import React from 'react'
-import Header from './Components/Header'
+
 import Banner from './Components/Banner'
-import Wishlist from './Components/Wishlist'
+// import Wishlist from './Components/Wishlist'
 import Axios from "./Components/toggle/Axios"
-import Week from './Components/this week/Week'
-import requests from './server/Server'
+// import Week from './Components/this week/Week'
+// import requests from './server/Server'
 import Serial from './Components/toggle/AllSerial/Serial'
 
 function Home() {
   return (
     <div>  
-        {/* <Banner /> */}
-        {/* <Axios />
-        <Wishlist />
+        {/* <Banner />
+         <Axios /> */}
+        {/*<Wishlist />
         <Week
         Name="Fan favorites"
         Data={requests.TopRated} />
