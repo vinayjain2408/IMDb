@@ -26,7 +26,7 @@ function Search() {
             console.log(response.data.results)
         }
         fetchData()
-    }, [])
+    }, [inputValue])
 
     let movies_default = "https://upload.wikimedia.org/wikipedia/commons/d/d1/Image_not_available.png"
 
