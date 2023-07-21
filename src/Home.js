@@ -11,9 +11,9 @@ function Home() {
   return (
     <div>  
        <Banner />
-         {/* <Axios />  */}
-        {/* <Wishlist /> */}
-        {/* <Week
+         <Axios /> 
+        <Wishlist />
+        <Week
         Name="Fan favorites"
         Data={requests.TopRated} />
       <Week
@@ -21,7 +21,7 @@ function Home() {
         Data={requests.Intheaters} />
       <Week
         Name="Coming soon to theaters"
-  Data={requests.UpcomingMovies} /> */}
+  Data={requests.UpcomingMovies} />
 
       <Serial />  
     </div>
