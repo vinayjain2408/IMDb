@@ -12,18 +12,16 @@ function Detail() {
   const [single, setSingle] = useState({});
   const [video, setVideo] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [modal, setModal] = useState(false);
+  // const [modal, setModal] = useState(false);
 
   useEffect(() => {
     async function fetchData() {
       try {
         const response = await axios.get(`https://api.themoviedb.org/3/${checkType}/${id}?api_key=251ac7a461ba588030cfa89b0cd75329`);
         setSingle(response.data);
-        setLoading(false);
         setLoading(false)
       } catch (error) {
         console.error('Error fetching data:', error);
-        setLoading(false);
       }
     }
 
@@ -35,207 +33,90 @@ function Detail() {
     try {
       const result = await axios.get(`https://api.themoviedb.org/3/${checkType}/${id}/videos?api_key=251ac7a461ba588030cfa89b0cd75329`);
       setVideo(result.data.results);
-      setModal(true);
+      // setModal(true);
+      setModal(!modal);
+      console.log(modal)
     } catch (error) {
       console.error('Error fetching data:', error);
     }
   };
 
+  const [modal, setModal] = useState(false);
+
   const toggleModal = () => {
     setModal(!modal);
   };
+  
+
 
   return (
     <>
-      {loading ? (
-        <Skeleton variant='rectangular' width='100%' className='box'>
-          <div style={{ paddingTop: '57%' }} />
-          <Box sx={{ width: 210, marginRight: 0.5, my: 5 }}>
-            <Skeleton variant='rectangular' width={210} height={300} />
-          </Box>
-          <Box sx={{ pr: 2 }}>
-            <Skeleton />
-            <Skeleton width='80%' padding='30px' />
-            <Skeleton width='60%' />
-            <Skeleton width='40%' />
-            <Skeleton width='40%' />
-          </Box>
-        </Skeleton>
-      ) : (
-        <div
-          className='box'
-          style={{ backgroundImage: `url(https://image.tmdb.org/t/p/original${single.backdrop_path})` }}
-        >
-          <div className='text'>
-            <h1>Details</h1>
+    {
+      loading ?
+      <Skeleton variant="rectangular" width="100%" className='box'>
+      <div style={{ paddingTop: '57%' }} />
+      <Box sx={{ width: 210, marginRight: 0.5, my: 5 }}>
+        <Skeleton variant='rectangular' width={210} height={300} />
+      </Box>
+      <Box sx={{ pr: 2 }}>
+          <Skeleton />
+          <Skeleton width='80%' padding="30px"/>
+          <Skeleton width='60%' />
+          <Skeleton width='40%' />
+          <Skeleton width='40%' />
+        </Box>
+    </Skeleton>
+:
+    
+      <div className='box' style={{ backgroundImage: `url(https://image.tmdb.org/t/p/original${single.backdrop_path})` }}>
+        <div className='text'>
+          <h1>Details</h1>
+        </div>
+        <div className='flex-box'>
+          <div className='Single-contain'>
+            <img src={`https://image.tmdb.org/t/p/original${single.poster_path}`} alt='Poster' />
           </div>
-          <div className='flex-box'>
-            <div className='Single-contain'>
-              <img src={`https://image.tmdb.org/t/p/original${single.poster_path}`} alt='Poster' />
-            </div>
-            <div className='lists'>
-              <h2>{single.original_title || single.original_name}</h2>
-              <p>{single.tagline}</p>
-              <p>{single.overview}</p>
-              <p>Rating: {single.vote_average}/10</p>
-              <p>{single.status}</p>
-              <p className='para'>
-                {single.genres &&
-                  single.genres.map((item) => (
-                    <span key={item.id}>{item.name}</span>
-                  ))}
-              </p>
-              <button onClick={handleTrailerClick}>Trailer</button>
-            </div>
+          <div className='lists'>
+            <h2>{single.original_title || single.original_name}</h2>
+            <p>{single.tagline}</p>
+            <p>{single.overview}</p>
+            <p>Rating: {single.vote_average}/10</p>
+            <p>{single.status}</p>
+            <p className='para'>
+              {single.genres &&
+                single.genres.map((item) => (
+                  <span key={item.id}>{item.name}</span>
+                ))}
+            </p>
+            <button onClick={handleTrailerClick}>Trailer </button>
           </div>
         </div>
-      )}
+      </div>
+}
 
-      <Modal show={modal} size='lg' onHide={toggleModal}>
-        <div className='tailer-modal'>
-          <button onClick={toggleModal}>X</button>
-          {video.length !== 0 && (
-            <ReactPlayer
-              width='800'
-              height='500'
-              url={`https://www.youtube.com/embed/${video[0].key}`}
-              controls
-              playing
-            />
-          )}
-        </div>
-      </Modal>
+      
+
+
+        <Modal show={modal }  size="lg">
+              
+          <div className='tailer-modal' >
+            <button onClick={toggleModal}>X</button>
+          <iframe
+           key={video?.length !==0 ? video[0]?.key : null}
+           width="800"
+           height="500"
+           src={`https://www.youtube.com/embed/${video?.length !==0 ? video[0]?.key : null}`}
+           title="youtube video"
+           ></iframe> 
+           </div>
+
+           </Modal>
+
     </>
   );
 }
 
 export default Detail;
-
-
-
-
-
-
-
-// import React, { useEffect, useState } from 'react';
-// import axios from 'axios';
-// import { Link, useParams } from 'react-router-dom';
-// import './Detail.css';
-// import { Button, Modal } from 'react-bootstrap';
-// import ReactPlayer from 'react-player';
-// import Skeleton from '@mui/material/Skeleton';
-// import Box from '@mui/material/Box';
-
-// function Detail() {
-//   const { checkType, id } = useParams();
-//   const [single, setSingle] = useState({});
-//   const [video, setVideo] = useState([]);
-//   const [loading, setLoading] = useState(true);
-//   // const [modal, setModal] = useState(false);
-
-//   useEffect(() => {
-//     async function fetchData() {
-//       try {
-//         const response = await axios.get(`https://api.themoviedb.org/3/${checkType}/${id}?api_key=251ac7a461ba588030cfa89b0cd75329`);
-//         setSingle(response.data);
-//         setLoading(false)
-//       } catch (error) {
-//         console.error('Error fetching data:', error);
-//       }
-//     }
-
-//     fetchData();
-//   }, [checkType, id]);
-
-//   const handleTrailerClick = async (e) => {
-//     e.preventDefault();
-//     try {
-//       const result = await axios.get(`https://api.themoviedb.org/3/${checkType}/${id}/videos?api_key=251ac7a461ba588030cfa89b0cd75329`);
-//       setVideo(result.data.results);
-//       // setModal(true);
-//       setModal(!modal);
-//       console.log(modal)
-//     } catch (error) {
-//       console.error('Error fetching data:', error);
-//     }
-//   };
-
-//   const [modal, setModal] = useState(false);
-
-//   const toggleModal = () => {
-//     setModal(!modal);
-//   };
-  
-
-
-//   return (
-//     <>
-//     {
-//       loading ?
-//       <Skeleton variant="rectangular" width="100%" className='box'>
-//       <div style={{ paddingTop: '57%' }} />
-//       <Box sx={{ width: 210, marginRight: 0.5, my: 5 }}>
-//         <Skeleton variant='rectangular' width={210} height={300} />
-//       </Box>
-//       <Box sx={{ pr: 2 }}>
-//           <Skeleton />
-//           <Skeleton width='80%' padding="30px"/>
-//           <Skeleton width='60%' />
-//           <Skeleton width='40%' />
-//           <Skeleton width='40%' />
-//         </Box>
-//     </Skeleton>
-// :
-    
-//       <div className='box' style={{ backgroundImage: `url(https://image.tmdb.org/t/p/original${single.backdrop_path})` }}>
-//         <div className='text'>
-//           <h1>Details</h1>
-//         </div>
-//         <div className='flex-box'>
-//           <div className='Single-contain'>
-//             <img src={`https://image.tmdb.org/t/p/original${single.poster_path}`} alt='Poster' />
-//           </div>
-//           <div className='lists'>
-//             <h2>{single.original_title || single.original_name}</h2>
-//             <p>{single.tagline}</p>
-//             <p>{single.overview}</p>
-//             <p>Rating: {single.vote_average}/10</p>
-//             <p>{single.status}</p>
-//             <p className='para'>
-//               {single.genres &&
-//                 single.genres.map((item) => (
-//                   <span key={item.id}>{item.name}</span>
-//                 ))}
-//             </p>
-//             <button onClick={handleTrailerClick}>Trailer </button>
-//           </div>
-//         </div>
-//       </div>
-// }
-
-      
-
-
-//         <Modal show={modal }  size="lg">
-              
-//           <div className='tailer-modal' >
-//             <button onClick={toggleModal}>X</button>
-//           <iframe
-//            key={video?.length !==0 ? video[0]?.key : null}
-//            width="800"
-//            height="500"
-//            src={`https://www.youtube.com/embed/${video?.length !==0 ? video[0]?.key : null}`}
-//            title="youtube video"
-//            ></iframe> 
-//            </div>
-
-//            </Modal>
-
-//     </>
-//   );
-// }
-
-// export default Detail;
 
 
 

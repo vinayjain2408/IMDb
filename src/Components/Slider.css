@@ -4,12 +4,36 @@
     box-sizing: border-box;
   }
   
-  .slider-container {
-    margin: 1rem 2rem;
+.slider-container {
+    margin-bottom: 3rem;
+    position: relative;
   }
+
+/* .slick-arrow{
+  background: none;
+} */
+.slick-prev{
+    background:none !important;
+    position: absolute;
+    top: 200px;
+    left: 40px;
+    z-index: 10;
+  }
+.slick-prev:before{
+    font-size: 35px;
+  }
+.slick-next{
+    background: none !important;
+    position: absolute;
+    top: 200px;
+    right: 40px;
+  }
+.slick-next:before{
+    font-size: 35px;
+}
   
   
-  .slide-image {
+.slide-image {
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
