@@ -3,6 +3,8 @@ import './Search.css';
 import axios from 'axios';
 import Slider from "react-slick";
 import { useParams } from 'react-router-dom';
+import Skeleton from '@mui/material/Skeleton';
+import Box from '@mui/material/Box';
 
 function Search() {
     const { inputValue } = useParams()
@@ -18,12 +20,14 @@ function Search() {
 
 
     const [search, setSearch] = useState([]);
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         async function fetchData() {
             const response = await axios.get(`https://api.themoviedb.org/3/search/movie?api_key=251ac7a461ba588030cfa89b0cd75329&query=${inputValue}`);
             setSearch(response.data.results);
             console.log(response.data.results)
+            setLoading(false)
         }
         fetchData()
     }, [inputValue])
@@ -38,8 +42,20 @@ function Search() {
         <div className='search'>
             <Slider {...settings}>
                 {
-                    search.map((items) => {
-
+                   loading
+                   ? Array.from(new Array(6)).map((_, index) => (
+                       <Box key={index} sx={{ width: 210, marginRight: 0.5, my: 5 }}>
+                         <Skeleton variant='rectangular' width={210} height={300} />
+                         <Box sx={{ pr: 2 }}>
+                           <Skeleton />
+                           <Skeleton width='20%' padding="30px"/>
+                           <Skeleton width='60%' />
+                           <Skeleton width='40%' />
+                           <Skeleton width='40%' />
+                         </Box>
+                       </Box>
+                     ))
+                   : search.map((items) => {
                         return (
                             <div className='movie-search' >
                                 <img src={(items.poster_path === null) ? movies_default : `https://image.tmdb.org/t/p/original${items.poster_path}`}></img>
