@@ -6,6 +6,9 @@ import Slider from 'react-slick';
 import AddIcon from '@mui/icons-material/Add';
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import "./Serial.css"
+import Box from '@mui/material/Box';
+import Typography from '@mui/material/Typography';
+import Skeleton from '@mui/material/Skeleton';
 
 function Serial() {
   var settings = {
@@ -18,9 +21,10 @@ function Serial() {
   };
 
   const [Serial, setSerial] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   const [SerialLink, setSerialLink] = useState(requests.popularMovie);
-  const [checkType , setCheckType] = useState('movie')
+  const [checkType, setCheckType] = useState('movie')
 
   function handleSerial(type) {
     if (type === 'movie') {
@@ -36,6 +40,7 @@ function Serial() {
       let response = await axios.get(`https://api.themoviedb.org/3/${SerialLink}`);
       console.log(response.data.results);
       setSerial(response.data.results);
+      setLoading(false);
     }
 
     fetchData();
@@ -50,27 +55,43 @@ function Serial() {
       <div className='top-week'>
         <h2>Popular TV & Movies Shows</h2>
         <Slider {...settings}>
-          {Serial.map((movie, index) => (
-            <div key={index} className='Movie-detail'>
-              <Link to={`/detail/${checkType}/${movie.id}`}>
-                <img src={`https://image.tmdb.org/t/p/original${movie.poster_path}`} />
-              </Link>
-              <div className='contain'>
-                <p>{movie.vote_average}</p>
-                <p>
-                  {index + 1}. {movie.original_title || movie.original_name}
-                </p>
-                <div className='list'>
-                  <a href=''>
-                    <AddIcon /> Watchlist
-                  </a>
-                  <a href=''>
-                    <PlayArrowIcon /> Trailer
-                  </a>
+
+          {
+              loading
+              ? Array.from(new Array(6)).map((_, index) => (
+                <Box key={index} sx={{ width: 210, marginRight: 0.5, my: 5 }}>
+                  <Skeleton variant='rectangular' width={210} height={300} />
+                  <Box sx={{ pr: 2 }}>
+                    <Skeleton />
+                    <Skeleton width='20%' padding="30px" />
+                    <Skeleton width='60%' />
+                    <Skeleton width='40%' />
+                    <Skeleton width='40%' />
+                  </Box>
+                </Box>
+              ))
+              : Serial.map((movie, index) => (
+                <div key={index} className='Movie-detail'>
+                  <Link to={`/detail/${checkType}/${movie.id}`}>
+                    <img src={`https://image.tmdb.org/t/p/original${movie.poster_path}`} />
+                  </Link>
+                  <div className='contain'>
+                    <p>{movie.vote_average}</p>
+                    <p>
+                      {index + 1}. {movie.original_title || movie.original_name}
+                    </p>
+                    <div className='list'>
+                      <a href=''>
+                        <AddIcon /> Watchlist
+                      </a>
+                      <a href=''>
+                        <PlayArrowIcon /> Trailer
+                      </a>
+                    </div>
+                  </div>
                 </div>
-              </div>
-            </div>
-          ))}
+              ))
+            }
         </Slider>
       </div>
     </>
