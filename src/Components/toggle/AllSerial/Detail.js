@@ -33,6 +33,7 @@ function Detail() {
     try {
       const result = await axios.get(`https://api.themoviedb.org/3/${checkType}/${id}/videos?api_key=251ac7a461ba588030cfa89b0cd75329`);
       setVideo(result.data.results);
+      console.log(result.data.results);
       // setModal(true);
       setModal(!modal);
       console.log(modal)
@@ -66,8 +67,7 @@ function Detail() {
           <Skeleton width='40%' />
         </Box>
     </Skeleton>
-:
-    
+         :    
       <div className='box' style={{ backgroundImage: `url(https://image.tmdb.org/t/p/original${single.backdrop_path})` }}>
         <div className='text'>
           <h1>Details</h1>

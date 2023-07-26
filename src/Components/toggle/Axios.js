@@ -9,6 +9,7 @@ import AddIcon from '@mui/icons-material/Add';
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import requests from '../../server/Server';
 import './Axios.css';
+import { Link } from 'react-router-dom';
 
 function Axios() {
   var settings = {
@@ -20,7 +21,7 @@ function Axios() {
     initialSlide: 1,
   };
 
-  const [axiosLink, setAxiosLink] = useState(requests.featureDay);
+  const [axiosLink, setAxiosLink] = useState(requests.Week);
   const [loading, setLoading] = useState(true);
   const [week, setWeek] = useState([]);
 
@@ -71,7 +72,9 @@ function Axios() {
               ))
             : week.map((movie, index) => (
                 <div key={index} className='Movie-detail'>
+                  <Link to={`movie/detail/${movie.id}`}>
                   <img src={`https://image.tmdb.org/t/p/original${movie.poster_path}`} alt={movie.title} />
+                  </Link>
                   <div className='contain'>
                     <p>
                       <StarIcon className='icon' />
@@ -88,7 +91,9 @@ function Axios() {
                         <PlayArrowIcon /> Trailer
                       </a>
                     </div>
+                    {/* <Link to={`movie/detail/${movie.id}`}><button>Detail</button></Link> */}
                   </div>
+                
                 </div>
               ))}
         </Slider>

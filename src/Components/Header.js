@@ -35,10 +35,7 @@ function Header() {
           <a href=''>Sign In</a>
         </div>
       </div>
-      <div className='Slider-box'>
-      
-     
-      </div>
+   
     </>
   );
 }

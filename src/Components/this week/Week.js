@@ -8,6 +8,7 @@ import Slider from "react-slick";
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Skeleton from '@mui/material/Skeleton';
+import { Link } from 'react-router-dom';
 
 function Week(props) {
 
@@ -56,7 +57,8 @@ function Week(props) {
           : week.map((movie, index) => {
             return (
               <div key={index} className='Movie-detail'>
-                <img src={`https://image.tmdb.org/t/p/original` + movie.poster_path} />
+                <Link to={`movie/Detail/${movie.id}`} >
+                <img src={`https://image.tmdb.org/t/p/original` + movie.poster_path} /></Link>
                 <div className='contain'>
                 <p><StarIcon className='icon' />{movie.vote_average}</p>
                 <p>{index + 1}. {movie.original_title}</p>

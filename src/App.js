@@ -5,6 +5,7 @@ import Footer from './Components/Footer';
 import Detail from './Components/toggle/AllSerial/Detail';
 import Home from './Home';
 import Search from './Components/search/Search';
+import Moviedetail from './Components/toggle/AllSerial/Moviedetail';
 function App() {
 
 
@@ -16,6 +17,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/detail/:checkType/:id" element={<Detail />} />
+        <Route path="/movie/Detail/:id" element={<Moviedetail />} />
         <Route path="/search/:inputValue" element={<Search />} />
       
       </Routes>
