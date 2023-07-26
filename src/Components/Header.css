@@ -5,7 +5,7 @@
     /* font-family: Roboto; */
 }
 .header{
-    width: 100vw;
+    /* width: 100vw; */
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -57,13 +57,48 @@
     padding: 7px;
 }
 
-@media screen and (max-width: 768px) {
-    .header {
-        background-color: rgba(0, 0, 0, 0.8);
+
+/* Media Query */
+
+@media screen and (max-width: 1284px) {
+    .menu {
+        margin-bottom: 1rem;
     }
 
-    .menu a {
-        font-size: 16px;
+    .input input {
+        /* width: 80% */
+        /* max-width: 00px; */
+        width: 400px;
+    height: 30px;
+    /* background-color: #fff;
+    color: #000;
+    border: none; */
+    }
+
+    .input button,
+    .input a {
+        font-size: 12px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .header {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .menu {
+        margin-bottom: 1rem;
+    }
+
+    .input input {
+        width: 100%;
+        max-width: 400px;
+    }
+
+    .input button,
+    .input a {
+        font-size: 10px;
     }
 }
 
