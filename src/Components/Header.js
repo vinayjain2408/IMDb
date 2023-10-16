@@ -32,7 +32,7 @@ function Header() {
             <FormatListBulletedIcon />
             Wishlist
           </a>
-          <a href=''>Sign In</a>
+          <a href=''>Sign Out</a>
         </div>
       </div>
    

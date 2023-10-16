@@ -92,13 +92,12 @@ function Detail() {
           </div>
         </div>
       </div>
-}
+    }
 
       
 
 
-        <Modal show={modal }  size="lg">
-              
+      <Modal show={modal }  size="lg">            
           <div className='tailer-modal' >
             <button onClick={toggleModal}>X</button>
           <iframe
@@ -109,8 +108,7 @@ function Detail() {
            title="youtube video"
            ></iframe> 
            </div>
-
-           </Modal>
+      </Modal>
 
     </>
   );
@@ -120,7 +118,11 @@ export default Detail;
 
 
 
-    {/* <ReactPlayer controls={true} url={`http://www.youtube.com/embed/${video?.length !==0 ? video[0]?.key : null}`} height="500px" width="750px"
+
+
+
+
+ {/* <ReactPlayer controls={true} url={`http://www.youtube.com/embed/${video?.length !==0 ? video[0]?.key : null}`} height="500px" width="750px"
           ></ReactPlayer> */}
 
 

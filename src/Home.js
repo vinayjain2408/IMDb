@@ -22,7 +22,6 @@ function Home() {
       <Week
         Name="Coming soon to theaters"
         Data={requests.UpcomingMovies} />
-
       <Serial />  
     </div>
   )

@@ -15,7 +15,7 @@ function Search() {
         speed: 500,
         slidesToShow: 6,
         slidesToScroll: 6,
-        initialSlide: 1,
+        initialSlide: 3,
     };
 
 
